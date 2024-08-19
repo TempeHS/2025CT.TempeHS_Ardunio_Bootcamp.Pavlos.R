@@ -29,7 +29,6 @@ static unsigned long MyUnsignedLong = 3.14159;
 void setup() {
   Serial.begin(9600);
   Serial.println("Serial Debug");
-
   
 }
 
