@@ -30,10 +30,18 @@
 */
 
 
+static unsigned int MyLed = A0;
+static unsigned int MyAnalog = A1;
+
 void setup() {
   
+  pinMode(MyLed, OUTPUT);
+  pinMode(MyAnalog, INPUT);
+
 }
 
 void loop() {
   
+  digitalWrite(MyLed, MyAnalog);
+
 }
