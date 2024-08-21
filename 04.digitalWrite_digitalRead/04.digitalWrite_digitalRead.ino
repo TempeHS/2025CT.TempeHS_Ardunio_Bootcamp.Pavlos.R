@@ -30,18 +30,19 @@
 */
 
 
-static unsigned int MyLed = A0;
-static unsigned int MyAnalog = A1;
+static unsigned int MyLed = 6;
+static signed int MyButton = 5;
+bool readPin;
 
 void setup() {
   
   pinMode(MyLed, OUTPUT);
-  pinMode(MyAnalog, INPUT);
+  pinMode(MyButton, INPUT);
 
 }
 
 void loop() {
   
-  digitalWrite(MyLed, MyAnalog);
+  digitalWrite(MyLed, !digitalRead(MyButton));
 
 }
