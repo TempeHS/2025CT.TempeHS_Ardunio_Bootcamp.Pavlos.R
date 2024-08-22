@@ -33,16 +33,82 @@
 static unsigned int MyLed = 6;
 static signed int MyButton = 5;
 bool readPin;
+bool readLed;
+
+
+#define buzzer 2
 
 void setup() {
   
   pinMode(MyLed, OUTPUT);
   pinMode(MyButton, INPUT);
 
+  Serial.begin(9600);
+  Serial.println("Debug");
+
+
+  pinMode(buzzer, OUTPUT);
+
 }
 
 void loop() {
   
-  digitalWrite(MyLed, !digitalRead(MyButton));
+  readPin = digitalRead(MyButton);
+  readLed = digitalRead(MyLed);
 
+  digitalWrite(MyLed, !readPin);
+
+  Serial.print("Pin-5:");
+  Serial.print(readPin);
+  Serial.print(", ");
+  Serial.print("Pin-6:");
+  Serial.println(readLed);
+
+  if(readPin == true) {
+
+    musicTone();
+
+  }
+
+
+
+}
+
+void musicTone() {
+  tone(buzzer, 80);
+  delay(500);
+  tone(buzzer, 260);
+  delay(250);
+  tone(buzzer, 80);
+  delay(150);
+  tone(buzzer, 360);
+  delay(150);
+  tone(buzzer, 80);
+  delay(1000);
+
+  tone(buzzer, 260);
+  delay(250);
+  tone(buzzer, 80);
+  delay(150);
+  tone(buzzer, 360);
+  delay(150);
+  tone(buzzer, 80);
+  delay(1000);
+
+  tone(buzzer, 260);
+  delay(250);
+  tone(buzzer, 80);
+  delay(150);
+  tone(buzzer, 360);
+  delay(150);
+  tone(buzzer, 80);
+  delay(1000);
+
+  tone(buzzer, 80);
+  delay(300);
+  tone(buzzer, 260);
+  delay(300);
+  tone(buzzer, 360);
+  delay(300);
+  noTone(buzzer);
 }
