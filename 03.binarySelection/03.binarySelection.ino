@@ -36,15 +36,18 @@
 static unsigned int ledPin = 8;
 static unsigned int buttonPin = 5;
 static unsigned int lineSensorPin = 7;
+int soundSensorPin = A3;
 
 bool readPin;
 bool readLineSensor;
+int readSound;
 
 void setup() {
   
   pinMode(ledPin, OUTPUT);
   pinMode(buttonPin, INPUT);
   pinMode(lineSensorPin, INPUT);
+  pinMode(soundSensorPin, INPUT);
   Serial.begin(9600);
   Serial.println("Serial Debug");
 
@@ -53,16 +56,24 @@ void setup() {
 void loop() {
   readPin = digitalRead(buttonPin);
   readLineSensor = digitalRead(lineSensorPin);
+  readSound = analogRead(soundSensorPin);
 
-  if (readLineSensor == LOW || readPin == HIGH) {
+  Serial.println(readSound);
 
-    digitalWrite(ledPin, HIGH);
-  
-  } else {
+  if (readSound < 300) {
 
     digitalWrite(ledPin, LOW);
 
+  } else if (readSound >= 300){
+
+    digitalWrite(ledPin, HIGH);
+
+  } else {
+
+    digitalWrite(ledPin, LOW);
+    
   }
+
 
 
   
