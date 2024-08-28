@@ -84,7 +84,7 @@ void musicTone() {
   tone(buzzer, 360);
   delay(150);
   tone(buzzer, 80);
-  delay(1000);
+  delay(750);
 
   tone(buzzer, 260);
   delay(250);
@@ -93,7 +93,7 @@ void musicTone() {
   tone(buzzer, 360);
   delay(150);
   tone(buzzer, 80);
-  delay(1000);
+  delay(750);
 
   tone(buzzer, 260);
   delay(250);
@@ -102,13 +102,13 @@ void musicTone() {
   tone(buzzer, 360);
   delay(150);
   tone(buzzer, 80);
-  delay(1000);
+  delay(750);
 
   tone(buzzer, 80);
-  delay(300);
+  delay(500);
   tone(buzzer, 260);
-  delay(300);
-  tone(buzzer, 360);
-  delay(300);
+  delay(500);
+  tone(buzzer, 460);
+  delay(500);
   noTone(buzzer);
 }

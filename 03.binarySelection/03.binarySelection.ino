@@ -32,10 +32,57 @@
 
 */
 
+
+static unsigned int ledPin = 8;
+static unsigned int buttonPin = 5;
+static unsigned int lineSensorPin = 7;
+
+bool readPin;
+bool readLineSensor;
+
 void setup() {
   
+  pinMode(ledPin, OUTPUT);
+  pinMode(buttonPin, INPUT);
+  pinMode(lineSensorPin, INPUT);
+  Serial.begin(9600);
+  Serial.println("Serial Debug");
+
 }
 
 void loop() {
+  readPin = digitalRead(buttonPin);
+  readLineSensor = digitalRead(lineSensorPin);
+
+  if (readLineSensor == LOW || readPin == HIGH) {
+
+    digitalWrite(ledPin, HIGH);
   
+  } else {
+
+    digitalWrite(ledPin, LOW);
+
+  }
+
+
+  
+
+
+
+
 }
+
+/*
+  IF ELSE 
+  if (readPin == LOW) {
+
+    digitalWrite(ledPin, HIGH);
+  
+  } else {
+    
+    digitalWrite(ledPin, LOW);
+
+  }
+  */
+  
+
