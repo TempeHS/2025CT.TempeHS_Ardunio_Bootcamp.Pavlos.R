@@ -23,18 +23,21 @@
 
 
 
-void setup() {
-  
-Serial.begin(9600);
-Serial.println("Serial Debug");
-
-pinMode(3, OUTPUT);
+unsigned static int rLED = 10;
+unsigned static int	bLED = 11;
+unsigned static int gLED = 12;
 
 
+void setup()
+{
+  pinMode(rLED, OUTPUT);
+  pinMode(bLED, OUTPUT);
+  pinMode(gLED, OUTPUT);
 }
 
-void loop() {
-
-  analogWrite(3, analogRead(A3) / 4);
-  
+void loop()
+{
+  analogWrite(rLED, 10);
+  analogWrite(bLED, 10);
+  analogWrite(gLED, 0);
 }

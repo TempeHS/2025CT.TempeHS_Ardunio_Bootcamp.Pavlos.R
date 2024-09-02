@@ -104,7 +104,7 @@ void musicTone() {
   tone(buzzer, 80);
   delay(750);
 
-  tone(buzzer, 80);
+  tone(buzzer, 160);
   delay(500);
   tone(buzzer, 260);
   delay(500);
