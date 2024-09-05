@@ -18,6 +18,20 @@
 */
 
 
+static unsigned int blueLED = 6;
+static unsigned int greenLED= 2;
+unsigned int blueLEDstate = LOW;
+unsigned int greenLEDstate = LOW;
+
+// Generally, you should use "unsigned long" for variables that hold time
+// The value will quickly become too large for an int to store
+unsigned long blueLEDPreviousMillis = 0;
+unsigned long greenLEDPreviousMillis = 0;
+
+// use a long so you can mathematically compare with the variable previousMillis without conversion
+const unsigned long blueLEDinterval = 2000;
+const unsigned long greenLEDinterval = 900;
+
 void setup() {
   
 }
@@ -25,5 +39,11 @@ void setup() {
 
 void loop() {
   
+  Serial.print("blueLED");
+  Serial.print(blueLEDstate);
+  Serial.println(",");
+  Serial.print("greenLED");
+  Serial.println(greenLEDstate);
+
 }
 
