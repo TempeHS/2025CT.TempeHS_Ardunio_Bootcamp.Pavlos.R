@@ -35,11 +35,38 @@
     
 */
 
+#define LEDpin 3
+#define BTNpin 4
+
 void setup() {
   
+pinMode(BTNpin, INPUT);
+pinMode(LEDpin, OUTPUT);
+
+Serial.begin(9600);
+Serial.println("Serial Monitor Debug");
+
 }
 
 void loop() {
       
+  do {
+    digitalWrite(LEDpin, HIGH);
+    Serial.println("Looping");
+  } 
+  while (digitalRead(BTNpin) > 0);
+  digitalWrite(LEDpin, LOW);
+  Serial.println("Loop Is Skipped");
+
 }
 
+/* 
+
+  while (digitalRead(BTNpin) > 0) {
+    digitalWrite(LEDpin, HIGH);
+    Serial.println("Looping");
+  }
+  digitalWrite(LEDpin, LOW);
+  Serial.println("Loop Is Skipped");
+
+*/
