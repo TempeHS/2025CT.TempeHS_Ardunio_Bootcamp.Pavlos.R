@@ -1,5 +1,5 @@
 /*
-  Author:
+  Author: Pavlos 11/09
 
   Learning Intention:
   The students will learn how to connect and control a servo motor.
@@ -24,10 +24,27 @@
 
 #include <Servo.h>
 
+Servo myServo;
+
+#define servoPin 7
+static signed int potpin = A2;
+
 void setup() {
   
+  myServo.attach(servoPin);
+
+
+  Serial.begin(9600);
+
 }
 
 void loop() {
+
+  int val = analogRead(potpin);
+
+  val = map(val, 0, 1023, 0, 180);
+  myServo.write(val);
   
+  Serial.println(analogRead(potpin));
+
 }
