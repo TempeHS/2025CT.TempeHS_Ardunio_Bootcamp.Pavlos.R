@@ -48,3 +48,47 @@ void loop() {
   Serial.println(analogRead(potpin));
 
 }
+
+/*
+#define ForwardServoPin 6
+#define BackwardServoPin 7
+#define LED 5
+
+static unsigned int potpin = A2;
+
+Servo ForwardServo;
+
+
+void setup()
+{
+  
+  ForwardServo.attach(ForwardServoPin);
+  BackwardServo.attach(BackwardServoPin);
+  
+  pinMode(LED, OUTPUT);
+  
+  Serial.begin(9600);
+  Serial.println("debugged");
+}
+
+void loop()
+{
+
+  int val = analogRead(potpin);
+  int LEDint = analogRead(potpin);
+
+  val = map(val, 0, 1023, 0, 180);
+  LEDint = map(LEDint, 0, 1023, 0, 255);
+  
+  ForwardServo.write(val);
+  BackwardServo.write(180 - val);
+  
+  Serial.println(val);
+   
+  analogWrite(LED, LEDint);
+
+  
+}
+*/
+
+

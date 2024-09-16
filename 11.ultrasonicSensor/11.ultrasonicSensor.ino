@@ -24,12 +24,51 @@
 */
 
 #include "Ultrasonic.h"
+#include <Servo.h>
 
-void setup()
-{
+Ultrasonic aidan(5);
+Servo myServo;
+
+#define servoPin 7
+static signed int potpin = A2;
+unsigned long previousMillis = 0;
+const unsigned long gateInterval = 5000;
+
+void setup() {
   
+  myServo.attach(servoPin);
+  myServo.write(180);
+
+  Serial.begin(9600);
+
 }
-void loop()
-{
+
+void loop() {
+
+  unsigned long currentMillis = millis();
+  int val = analogRead(potpin);
+
+  Serial.println(aidan.distanceRead());
+
+  if (aidan.distanceRead() <= 20) {
+    
+    myServo.write(90);
+    previousMillis = currentMillis;
+
+  } else {
+
+
+
+    if (currentMillis - previousMillis >= gateInterval) {
+
+      myServo.write(180);
+
+    }
+  }
+
+  //val = map(val, 0, 1023, 0, 180);
+  //myServo.write(val);
   
+  //Serial.println(analogRead(potpin));
+
 }
