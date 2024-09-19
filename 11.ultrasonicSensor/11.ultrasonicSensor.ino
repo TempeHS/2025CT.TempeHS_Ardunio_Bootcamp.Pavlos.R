@@ -30,7 +30,6 @@ Ultrasonic aidan(5);
 Servo myServo;
 
 #define servoPin 7
-static signed int potpin = A2;
 unsigned long previousMillis = 0;
 const unsigned long gateInterval = 5000;
 
@@ -46,29 +45,36 @@ void setup() {
 void loop() {
 
   unsigned long currentMillis = millis();
-  int val = analogRead(potpin);
+  int val = aidan.distanceRead();
+  
 
-  Serial.println(aidan.distanceRead());
+  
+  Serial.print("Write value:");
+  Serial.print(val);
+  Serial.println();
 
-  if (aidan.distanceRead() <= 20) {
-    
-    myServo.write(90);
+
+
+  if (val <= 20) {
+
+    val = aidan.distanceRead();
+    int distance = val * 4.5 + 90;
+    myServo.write(distance);
     previousMillis = currentMillis;
 
-  } else {
+    Serial.print("Write value:");
+    Serial.print(val);
+    Serial.println();
 
+    while (val <= 10) {
 
+    }
+
+  }
 
     if (currentMillis - previousMillis >= gateInterval) {
 
       myServo.write(180);
 
     }
-  }
-
-  //val = map(val, 0, 1023, 0, 180);
-  //myServo.write(val);
-  
-  //Serial.println(analogRead(potpin));
-
 }
