@@ -43,7 +43,7 @@ void loop() {
   int val = analogRead(potpin);
 
   val = map(val, 0, 1023, 0, 180);
-  myServo.write(val);
+  myServo.write(100);
   
   Serial.println(analogRead(potpin));
 
